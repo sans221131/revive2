@@ -58,7 +58,7 @@ export default function FaqFooter() {
 	const { openModal } = useEnquireModal();
 
 	return (
-		<section id="faq" className="scroll-mt-24 border-t-[3px] border-[#FACB06] bg-[#FFFFFF] pb-0 pt-10 md:pt-16">
+		<section id="faq" className="scroll-mt-24 border-t-[3px] border-[#FACB06] bg-white pb-0 pt-10 md:pt-16">
 			<div className="container-shell">
 				<LazyMotion features={domAnimation}>
 
@@ -70,9 +70,9 @@ export default function FaqFooter() {
 						transition={{ duration: reducedMotion ? 0.15 : 0.44, ease: [0.22, 1, 0.36, 1] }}
 						className="mb-12"
 					>
-						<div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#0A2C59]/15 bg-[#0A2C59]/5 px-4 py-1.5">
-							<span className="h-1.5 w-1.5 rounded-full bg-[#FACB06]" aria-hidden="true" />
-							<span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#0A2C59]">Admissions FAQ</span>
+					<div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#0A2C59]/15 bg-[#0A2C59]/5 px-4 py-1.5">
+						<span className="h-1.5 w-1.5 rounded-full bg-[#FACB06]" aria-hidden="true" />
+						<span className="text-xs font-semibold uppercase tracking-[0.14em] text-[#0A2C59]">Admissions FAQ</span>
 						</div>
 						<div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
 							<h2
@@ -116,7 +116,7 @@ export default function FaqFooter() {
 							transition={{ duration: reducedMotion ? 0.15 : 0.44, ease: [0.22, 1, 0.36, 1], delay: reducedMotion ? 0 : 0.16 }}
 							className="md:sticky md:top-24"
 						>
-							<div className="overflow-hidden bg-[#0A2C59] p-7 text-white md:p-8">
+					<div className="overflow-hidden rounded-2xl border border-[#0A2C59]/10 bg-[#0A2C59] p-7 text-white md:p-8">
 								{/* Top gold bar */}
 								<div className="mb-5 h-[3px] w-10 bg-[#FACB06]" />
 								<h3
@@ -159,18 +159,18 @@ export default function FaqFooter() {
 			</div>
 
 			{/* Footer */}
-			<footer className="mt-14 border-t border-[#E6E8EC] bg-[#F7F7F7] py-8">
-				<div className="container-shell flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-					<p className="text-sm font-semibold text-[#0A2C59]">Amity University</p>
-					<div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-[#6C7676]">
-						<a href="#" className="hover:text-[#0A2C59] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A2C59]/40">
-							Privacy Policy
-						</a>
-						<span aria-hidden="true" className="text-[#E6E8EC]">|</span>
-						<a href="#" className="hover:text-[#0A2C59] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A2C59]/40">
-							Terms of Use
-						</a>
-						<span aria-hidden="true" className="text-[#E6E8EC]">|</span>
+		<footer className="mt-14 border-t border-[#E6E8EC] bg-[#F7F7F7] py-8">
+			<div className="container-shell flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+				<p className="text-sm font-semibold text-[#0A2C59]">Amity University</p>
+				<div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-[#6C7676]">
+					<a href="#" className="hover:text-[#0A2C59] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A2C59]/30">
+						Privacy Policy
+					</a>
+					<span aria-hidden="true" className="text-[#E6E8EC]">|</span>
+					<a href="#" className="hover:text-[#0A2C59] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A2C59]/30">
+						Terms of Use
+					</a>
+					<span aria-hidden="true" className="text-[#E6E8EC]">|</span>
 						<span>Admissions subject to eligibility criteria.</span>
 					</div>
 				</div>

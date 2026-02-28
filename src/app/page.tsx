@@ -13,10 +13,15 @@ export default function Home() {
 			<StickyHeader />
 			<main id="main-content">
 				<HeroLead />
+				<div aria-hidden="true" className="h-px bg-gradient-to-r from-transparent via-[#FACB06]/30 to-transparent" />
 				<RecognitionStrip />
+				<div aria-hidden="true" className="h-px bg-gradient-to-r from-transparent via-[#FACB06]/20 to-transparent" />
 				<PillarsGrid />
+				<div aria-hidden="true" className="h-px bg-gradient-to-r from-transparent via-[#FACB06]/20 to-transparent" />
 				<StudentLifeTabs />
+				<div aria-hidden="true" className="h-px bg-gradient-to-r from-transparent via-[#FACB06]/20 to-transparent" />
 				<Outcomes />
+				<div aria-hidden="true" className="h-px bg-gradient-to-r from-transparent via-[#FACB06]/20 to-transparent" />
 				<AlumniCarousel />
 				<FaqFooter />
 			</main>

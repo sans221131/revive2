@@ -85,9 +85,10 @@ h6 {
 
 .marquee-track {
 	display: flex;
+	flex-wrap: nowrap;
 	width: max-content;
 	align-items: center;
-	animation: marquee 28s linear infinite;
+	animation: marquee 40s linear infinite;
 }
 
 @keyframes marquee {
@@ -96,6 +97,22 @@ h6 {
 	}
 	to {
 		transform: translateX(-50%);
+	}
+}
+
+.marquee-track-reverse {
+	display: flex;
+	width: max-content;
+	align-items: center;
+	animation: marquee-reverse 32s linear infinite;
+}
+
+@keyframes marquee-reverse {
+	from {
+		transform: translateX(-50%);
+	}
+	to {
+		transform: translateX(0);
 	}
 }
 
@@ -111,12 +128,49 @@ h6 {
 	}
 }
 
+/* ── Hero shimmer sweep ───────────────────────────────────────────── */
+.hero-shimmer {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background: linear-gradient(
+		108deg,
+		transparent 32%,
+		rgba(250, 203, 6, 0.07) 50%,
+		transparent 68%
+	);
+	background-size: 300% 100%;
+	animation: shimmer-sweep 8s ease-in-out infinite;
+}
+
+@keyframes shimmer-sweep {
+	0%   { background-position: 220% 0; }
+	100% { background-position: -120% 0; }
+}
+
+/* ── Section gold separator ──────────────────────────────────────── */
+.section-gold-sep {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+	padding-block: 0.25rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;
 	}
 
+	.hero-shimmer {
+		animation: none;
+	}
+
 	.marquee-track {
+		animation: none;
+	}
+
+	.marquee-track-reverse {
 		animation: none;
 	}
 

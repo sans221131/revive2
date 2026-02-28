@@ -1,6 +1,7 @@
 "use client";
 
 import { LazyMotion, domAnimation, m, useReducedMotion } from "framer-motion";
+import NextImage from "next/image";
 import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "../ui/Button";
@@ -248,6 +249,7 @@ const stats = [
 export default function HeroLead() {
 	const reducedMotion = useReducedMotion();
 	const { openModal } = useEnquireModal();
+	const [imageLoaded, setImageLoaded] = useState(false);
 	const [formValues, setFormValues] = useState<LeadFormValues>({
 		fullName: "",
 		mobile: "",
@@ -307,9 +309,29 @@ export default function HeroLead() {
 		<section
 			id="top"
 			aria-labelledby="hero-heading"
-				className="hero-pattern section-shell scroll-mt-20 pb-12 pt-24 text-[#FFFFFF] md:pb-16 md:pt-28"
+				className="relative section-shell scroll-mt-20 pb-28 pt-24 text-[#FFFFFF] md:pb-32 md:pt-28 overflow-hidden"
 		>
-			<div className="container-shell">
+			{/* Hero background image */}
+			<NextImage
+				src="/hero.webp"
+				alt=""
+				fill
+				className="object-cover object-center"
+				priority
+				unoptimized
+				aria-hidden="true"
+				onLoad={() => setImageLoaded(true)}
+			/>
+			{/* Dark overlay */}
+			<div className="absolute inset-0 bg-gradient-to-br from-[#041428]/85 via-[#0A2C59]/75 to-[#041428]/80" aria-hidden="true" />
+			{/* Gold glow */}
+			<div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(250,203,6,0.18),transparent_40%)]" aria-hidden="true" />
+			{/* Animated shimmer sweep */}
+			<div className="hero-shimmer" aria-hidden="true" />
+
+			<div
+				className={`container-shell relative z-10 transition-opacity duration-700 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+			>
 				<LazyMotion features={domAnimation}>
 					<div className="grid items-start gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
 
@@ -373,15 +395,8 @@ export default function HeroLead() {
 								<Button onClick={openModal} size="lg" className="rounded-full px-7">
 									Enquire Now
 								</Button>
-								<Button
-									onClick={openModal}
-									variant="secondary"
-									size="lg"
-									className="rounded-full border-[#FFFFFF]/50 text-[#FFFFFF] hover:border-[#FACB06] hover:bg-[#FACB06] hover:text-[#0A2C59]"
-								>
-									Get Brochure
-								</Button>
 							</div>
+
 						</m.div>
 
 						{/* ── Right: enquiry form ─────────────────────────────────── */}
@@ -556,6 +571,27 @@ export default function HeroLead() {
 					</div>
 				</LazyMotion>
 			</div>
-		</section>
+
+		{/* ── Full-width stat bar — bridges hero into next section ── */}
+		<div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/8 bg-[#020E1E]/60 backdrop-blur-md">
+			<div className="container-shell">
+				<div className={`grid grid-cols-3 divide-x divide-white/8 transition-all duration-700 ${imageLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}
+					style={{ transitionDelay: "0.5s" }}
+				>
+					{[
+						{ label: "India Today Ranking", value: "#1 Private Uni", sub: "11 consecutive years" },
+						{ label: "On-campus placements", value: "27,000+", sub: "students placed last year" },
+						{ label: "Hiring partners", value: "800+ companies", sub: "across all sectors" },
+					].map((item) => (
+						<div key={item.label} className="px-4 py-3 md:px-6 md:py-4">
+							<p className="text-[9px] font-semibold uppercase tracking-[0.13em] text-white/40">{item.label}</p>
+							<p className="mt-0.5 text-sm font-bold text-[#FACB06] md:text-base">{item.value}</p>
+							<p className="text-[9px] text-white/30">{item.sub}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+	</section>
 	);
 }

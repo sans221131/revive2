@@ -4,54 +4,58 @@ import { LazyMotion, domAnimation, m, useReducedMotion } from "framer-motion";
 
 const recognitions = [
 	{
+		badge: "India Today Ranking",
 		icon: (
 			<svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
 				<path d="M12 2 15.09 8.26 22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z" strokeLinecap="round" strokeLinejoin="round" />
 			</svg>
 		),
-		title: "Recognized Academic Framework",
-		detail: "Structured curriculum planning and assessment aligned with contemporary higher-education standards.",
+		title: "India's #1 Not-for-Profit Private University",
+		detail: "Ranked No. 1 for eleven consecutive years by India Today among not-for-profit private universities in India.",
 	},
 	{
+		badge: "US Accreditation",
 		icon: (
 			<svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-				<rect x="2" y="7" width="20" height="14" rx="2" />
-				<path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" strokeLinecap="round" />
-				<path d="M12 12v4M10 14h4" strokeLinecap="round" />
+				<circle cx="12" cy="8" r="6" strokeLinecap="round" />
+				<path d="M3 20.4v-.4a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v.4" strokeLinecap="round" />
 			</svg>
 		),
-		title: "Industry-Aligned Exposure",
-		detail: "Frequent corporate interactions, project-based training, and employability-focused preparation.",
+		title: "WSCUC Accredited — Asia's Only",
+		detail: "Asia's only not-for-profit university to receive WSCUC (US Regional) accreditation — the gold standard globally.",
 	},
 	{
+		badge: "UK Certification",
 		icon: (
 			<svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-				<circle cx="12" cy="12" r="10" />
-				<path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z" strokeLinecap="round" />
+				<rect x="3" y="3" width="18" height="18" rx="3" />
+				<path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
 			</svg>
 		),
-		title: "Global Learning Environment",
-		detail: "Diverse student community and international opportunities that broaden academic perspective.",
+		title: "QAA Certified by UK",
+		detail: "Certified by the UK's Quality Assurance Agency for Higher Education — recognising international academic standards.",
 	},
 	{
+		badge: "UGC Recognised",
 		icon: (
 			<svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-				<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" strokeLinecap="round" />
-				<circle cx="9" cy="7" r="4" />
-				<path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" strokeLinecap="round" />
+				<path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Z" strokeLinecap="round" strokeLinejoin="round" />
+				<path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5" strokeLinecap="round" />
 			</svg>
 		),
-		title: "Student Support Systems",
-		detail: "Mentoring, academic advising, and holistic assistance from onboarding to graduation.",
+		title: "UGC & AICTE Approved",
+		detail: "Fully recognised by the University Grants Commission and AICTE, India — eligible for UPSC, CAT, GATE and all national exams.",
 	},
 ] as const;
 
 const trustPhrases = [
-	"Accreditation-aligned academic practices",
-	"Career readiness initiatives across programs",
-	"Student-first mentoring approach",
-	"Strong alumni and recruiter engagement",
-	"Campus ecosystem designed for all-round growth",
+	"27,000+ on-campus placements last year",
+	"Ranked Top 3% Universities Globally",
+	"NAAC A++ Grade",
+	"11 consecutive years India's #1 not-for-profit private university",
+	"Asia's only WSCUC-accredited not-for-profit university",
+	"150,000+ students across 12 universities",
+	"2210 patents filed — more than any single Indian university",
 ] as const;
 
 const cardContainer = {
@@ -98,10 +102,10 @@ export default function RecognitionStrip() {
 						className="text-3xl font-bold text-[#0A2C59] md:text-4xl"
 						style={{ fontFamily: "var(--font-libre-baskerville), serif" }}
 					>
-							Recognition and trust built over years
+							Accreditations &amp; rankings you can verify
 						</h2>
 						<p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[#6C7676] md:text-base">
-							A credible educational experience depends on standards, consistency, and outcomes — the signals students and families rely on.
+							Amity holds India's highest university accreditations — including the only US and UK dual accreditation in Asia — backed by 27 years of consistent rankings.
 						</p>
 					</m.div>
 
@@ -118,17 +122,23 @@ export default function RecognitionStrip() {
 							<m.div
 								key={item.title}
 								variants={reducedMotion ? undefined : cardItem}
-								whileHover={reducedMotion ? undefined : { y: -5, transition: { duration: 0.22, ease: "easeOut" } }}
-								className="group flex flex-col rounded-2xl border border-[#E6E8EC] bg-[#FFFFFF] p-5 shadow-[0_4px_16px_rgba(10,44,89,0.06)] transition-shadow hover:shadow-[0_12px_32px_rgba(10,44,89,0.12)]"
+								whileHover={reducedMotion ? undefined : { y: -6, transition: { duration: 0.22, ease: "easeOut" } }}
+								className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#E6E8EC] bg-gradient-to-b from-[#FFFDF0]/70 to-[#FFFFFF] p-5 shadow-[0_4px_16px_rgba(10,44,89,0.06)] transition-shadow hover:shadow-[0_14px_36px_rgba(10,44,89,0.14)]"
 							>
-								{/* Icon badge */}
+								{/* Gold top-border accent */}
+								<div className="absolute left-0 right-0 top-0 h-[3px] bg-gradient-to-r from-[#FACB06] via-[#FACB06]/80 to-[#FACB06]/30" aria-hidden="true" />
+								{/* Source badge */}
+								<span className="mb-3 self-start rounded-full border border-[#FACB06]/40 bg-[#FFFBEA] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.12em] text-[#8A6800]">
+									{item.badge}
+								</span>
+								{/* Icon badge — warm gold glow */}
 								<m.span
-									whileHover={reducedMotion ? undefined : { scale: 1.08, transition: { duration: 0.18 } }}
-									className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#0A2C59]/10 bg-[#0A2C59]/5 text-[#0A2C59]"
+									whileHover={reducedMotion ? undefined : { scale: 1.1, rotate: 4, transition: { duration: 0.2 } }}
+									className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#FACB06]/30 bg-[#FFFBEA] text-[#9A6E00] shadow-[0_0_0_4px_rgba(250,203,6,0.08)]"
 								>
 									{item.icon}
 								</m.span>
-								{/* Gold divider — animates width on card entry */}
+								{/* Gold divider */}
 								<m.div
 									initial={{ width: 0 }}
 									whileInView={{ width: 32 }}

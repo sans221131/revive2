@@ -170,14 +170,17 @@ export default function PillarsGrid() {
 										delay: reducedMotion ? 0 : i * 0.06,
 									}}
 									className={[
-										// Mobile: card
-										"group relative rounded-2xl border border-[#0A2C59]/10 bg-white/60 p-5 shadow-[0_1px_0_rgba(10,44,89,0.06)] backdrop-blur",
-										"transition-all duration-300",
-										"hover:border-[#0A2C59]/16 hover:bg-white/75 hover:shadow-[0_8px_30px_rgba(10,44,89,0.10)]",
-										"active:scale-[0.99]",
-										// Desktop: row list
-										"md:rounded-none md:border-0 md:bg-transparent md:p-0 md:shadow-none md:backdrop-blur-0 md:active:scale-100",
-										isLast ? "md:pt-7 md:pb-0" : "md:border-b md:border-[#0A2C59]/[0.07] md:py-7 md:hover:bg-white/70",
+									// Mobile: card with per-pillar gradient
+									"group relative rounded-2xl border border-[#0A2C59]/10 p-5 shadow-[0_2px_10px_rgba(10,44,89,0.07)] backdrop-blur",
+									"transition-all duration-300",
+									"hover:-translate-y-1 hover:border-[#FACB06]/30 hover:shadow-[0_12px_36px_rgba(10,44,89,0.14)]",
+									"active:scale-[0.99]",
+									i % 2 === 0
+										? "bg-gradient-to-br from-[#FFFDF0] to-white/80"
+										: "bg-gradient-to-br from-[#EEF2FA]/60 to-white/80",
+									// Desktop: row list
+									"md:rounded-none md:border-0 md:bg-transparent md:p-0 md:shadow-none md:backdrop-blur-0 md:active:scale-100 md:hover:translate-y-0",
+									isLast ? "md:pt-7 md:pb-0" : "md:border-b md:border-[#0A2C59]/[0.07] md:py-7 md:hover:bg-[#FFFDF5]/60",
 									].join(" ")}
 								>
 									{/* Desktop gold number */}
@@ -204,7 +207,7 @@ export default function PillarsGrid() {
 											<div className="flex items-start justify-between gap-3">
 												<div className="flex items-start gap-3">
 													{/* Icon chip */}
-													<span className="mt-0.5 grid h-10 w-10 place-items-center rounded-xl border border-[#0A2C59]/10 bg-white/70 text-[#0A2C59]/70 transition-colors duration-300 group-hover:text-[#FACB06] md:h-9 md:w-9 md:rounded-full">
+													<span className="mt-0.5 grid h-10 w-10 place-items-center rounded-xl border border-[#FACB06]/20 bg-[#FFFBEA] text-[#9A6E00] shadow-[0_0_0_3px_rgba(250,203,6,0.06)] transition-all duration-300 group-hover:bg-[#FACB06] group-hover:text-[#0A2C59] group-hover:shadow-[0_0_0_4px_rgba(250,203,6,0.15)] md:h-9 md:w-9 md:rounded-full">
 														<pillar.Icon className="h-[18px] w-[18px]" />
 													</span>
 

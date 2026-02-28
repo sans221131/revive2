@@ -13,13 +13,14 @@ type AccordionProps = {
 	items: AccordionItem[];
 	defaultOpenId?: string;
 	className?: string;
+	dark?: boolean;
 };
 
-export function Accordion({ items, defaultOpenId, className }: AccordionProps) {
+export function Accordion({ items, defaultOpenId, className, dark = false }: AccordionProps) {
 	const [openId, setOpenId] = useState<string | null>(defaultOpenId ?? null);
 
 	return (
-		<div className={cx("divide-y divide-[#E6E8EC]", className)}>
+		<div className={cx(dark ? "divide-y divide-white/10" : "divide-y divide-[#E6E8EC]", className)}>
 			{items.map((item) => {
 				const isOpen = item.id === openId;
 				return (
@@ -36,7 +37,9 @@ export function Accordion({ items, defaultOpenId, className }: AccordionProps) {
 								<span
 									className={cx(
 										"text-[15px] font-semibold leading-snug transition-colors duration-200",
-										isOpen ? "text-[#0A2C59]" : "text-[#0A2C59]/80 group-hover:text-[#0A2C59]",
+										isOpen
+									? (dark ? "text-[#FACB06]" : "text-[#0A2C59]")
+									: (dark ? "text-white/70 group-hover:text-white" : "text-[#0A2C59]/80 group-hover:text-[#0A2C59]"),
 									)}
 								>
 									{item.question}
@@ -44,7 +47,9 @@ export function Accordion({ items, defaultOpenId, className }: AccordionProps) {
 								<span
 									className={cx(
 										"flex h-6 w-6 shrink-0 items-center justify-center text-xl font-light leading-none transition-all duration-300",
-										isOpen ? "rotate-45 text-[#FACB06]" : "rotate-0 text-[#0A2C59]/30 group-hover:text-[#0A2C59]/60",
+										isOpen
+									? "rotate-45 text-[#FACB06]"
+									: (dark ? "rotate-0 text-white/30 group-hover:text-white/60" : "rotate-0 text-[#0A2C59]/30 group-hover:text-[#0A2C59]/60"),
 									)}
 									aria-hidden="true"
 								>
@@ -62,7 +67,7 @@ export function Accordion({ items, defaultOpenId, className }: AccordionProps) {
 							)}
 						>
 							<div className="overflow-hidden">
-								<p className="pb-5 pr-10 text-[14px] leading-relaxed text-[#6C7676]">{item.answer}</p>
+								<p className={`pb-5 pr-10 text-[14px] leading-relaxed ${dark ? "text-white/55" : "text-[#6C7676]"}`}>{item.answer}</p>
 							</div>
 						</div>
 					</div>

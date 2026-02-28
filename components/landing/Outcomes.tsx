@@ -1,6 +1,7 @@
 "use client";
 
 import { LazyMotion, domAnimation, m, useReducedMotion, useMotionValue, animate } from "framer-motion";
+import NextImage from "next/image";
 import { useEffect, useRef } from "react";
 import { Button } from "../ui/Button";
 import { useEnquireModal } from "../../src/lib/enquire-context";
@@ -101,6 +102,30 @@ const proofBlocks = [
 	},
 ] as const;
 
+type Recruiter = { name: string; logo: string };
+
+// Only companies with real logos — keeps the strip visually uniform
+const recruiters: Recruiter[] = [
+	{ name: "Accenture",        logo: "/recruiters/accenture.svg" },
+	{ name: "Infosys",          logo: "/recruiters/infosys.svg" },
+	{ name: "Wipro",            logo: "/recruiters/wipro.svg" },
+	{ name: "IBM",              logo: "/recruiters/ibm.svg" },
+	{ name: "Microsoft",        logo: "/recruiters/microsoft.svg" },
+	{ name: "HDFC Bank",        logo: "/recruiters/hdfc.svg" },
+	{ name: "ICICI Bank",       logo: "/recruiters/icici.svg" },
+	{ name: "American Express", logo: "/recruiters/americanexpress.svg" },
+	{ name: "Samsung",          logo: "/recruiters/samsung.svg" },
+	{ name: "Sony",             logo: "/recruiters/sony.svg" },
+	{ name: "HP",               logo: "/recruiters/hp.svg" },
+	{ name: "Siemens",          logo: "/recruiters/siemens.svg" },
+	{ name: "Coca-Cola",        logo: "/recruiters/cocacola.svg" },
+	{ name: "PepsiCo",          logo: "/recruiters/pepsico.svg" },
+	{ name: "Nokia",            logo: "/recruiters/nokia.svg" },
+	{ name: "Amazon",           logo: "/recruiters/amazon.svg" },
+	{ name: "Google",           logo: "/recruiters/google.svg" },
+	{ name: "Flipkart",         logo: "/recruiters/flipkart.svg" },
+];
+
 const industries = ["Technology", "Banking", "Consulting", "FMCG", "Media", "Healthcare", "E-commerce", "Manufacturing"] as const;
 
 const proofContainer = {
@@ -116,6 +141,8 @@ const proofItem = {
 export default function Outcomes() {
 	const reducedMotion = useReducedMotion();
 	const { openModal } = useEnquireModal();
+	// Two copies so the -50% CSS animation loops seamlessly
+	const marqueeItems = [...recruiters, ...recruiters];
 
 	return (
 		<section id="outcomes" className="scroll-mt-24 bg-[#F7F7F7] py-10 md:py-16">
@@ -261,7 +288,58 @@ export default function Outcomes() {
 						</div>
 					</m.div>
 
-				{/* Enquire CTA */}
+					{/* Recruiter strip */}
+					<m.div
+						initial={{ opacity: 0, y: reducedMotion ? 0 : 12 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true, amount: 0.2 }}
+						transition={{ duration: reducedMotion ? 0.15 : 0.4, ease: "easeOut", delay: reducedMotion ? 0 : 0.15 }}
+						className="mt-4 rounded-2xl border border-[#E6E8EC] bg-white"
+					>
+						{/* Header row */}
+						<div className="flex items-center justify-between border-b border-[#E6E8EC] px-5 py-3">
+							<p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#6C7676]">Amitians are working at</p>
+							<span className="rounded-full bg-[#0A2C59]/5 px-2.5 py-0.5 text-[10px] font-bold text-[#0A2C59]">800+ companies</span>
+						</div>
+
+						{/* Logo marquee */}
+						<div className="relative overflow-hidden py-5 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+							{reducedMotion ? (
+								<div className="flex flex-wrap gap-4 px-6">
+									{recruiters.map((r) => (
+										<div key={r.name} className="flex h-10 items-center justify-center px-2">
+											<NextImage src={r.logo} alt={r.name} width={88} height={28} className="h-6 w-auto object-contain opacity-40" unoptimized />
+										</div>
+									))}
+								</div>
+							) : (
+								<div className="marquee-track">
+									{marqueeItems.map((r, i) => (
+										<div
+											key={`${r.name}-${i}`}
+											className="mx-6 flex h-10 shrink-0 items-center justify-center"
+										>
+											<NextImage
+												src={r.logo}
+												alt={r.name}
+												width={100}
+												height={32}
+												className="h-7 w-auto object-contain opacity-40 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0"
+												unoptimized
+											/>
+										</div>
+									))}
+								</div>
+							)}
+						</div>
+
+						{/* Footer note */}
+						<div className="border-t border-[#E6E8EC] px-5 py-2.5">
+							<p className="text-[11px] text-[#9CA3AF]">Also including TCS, HCL, Ernst &amp; Young, McKinsey, Morgan Stanley, Standard Chartered &amp; many others</p>
+						</div>
+					</m.div>
+
+					{/* Enquire CTA */}
 				<m.div
 					initial={{ opacity: 0, y: reducedMotion ? 0 : 14 }}
 					whileInView={{ opacity: 1, y: 0 }}

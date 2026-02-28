@@ -1,7 +1,8 @@
 "use client";
 
 import { LazyMotion, domAnimation, m, AnimatePresence, useReducedMotion } from "framer-motion";
-import { useMemo, useState } from "react";
+import Image from "next/image";
+import React, { useMemo, useState } from "react";
 import { Tabs } from "../ui/Tabs";
 import { Button } from "../ui/Button";
 import { useEnquireModal } from "../../src/lib/enquire-context";
@@ -13,6 +14,8 @@ type LifeTabContent = {
 	points: string[];
 	stats: string[];
 	checklist: string[];
+	image: string;
+	imageAlt: string;
 };
 
 const tabIcons: Record<LifeTabId, React.ReactNode> = {
@@ -50,12 +53,12 @@ const tabIcons: Record<LifeTabId, React.ReactNode> = {
 	),
 };
 
-const tabLabels: Array<{ id: LifeTabId; label: string }> = [
-	{ id: "facilities", label: "Facilities" },
-	{ id: "clubs", label: "Clubs" },
-	{ id: "sports", label: "Sports" },
-	{ id: "events", label: "Events" },
-	{ id: "support", label: "Support" },
+const tabLabels: Array<{ id: LifeTabId; label: string; icon: React.ReactNode }> = [
+	{ id: "facilities", label: "Facilities", icon: tabIcons.facilities },
+	{ id: "clubs", label: "Clubs", icon: tabIcons.clubs },
+	{ id: "sports", label: "Sports", icon: tabIcons.sports },
+	{ id: "events", label: "Events", icon: tabIcons.events },
+	{ id: "support", label: "Support", icon: tabIcons.support },
 ];
 
 const tabContent: Record<LifeTabId, LifeTabContent> = {
@@ -70,6 +73,8 @@ const tabContent: Record<LifeTabId, LifeTabContent> = {
 		],
 		stats: ["Modern library infrastructure", "Multiple study zones", "Lab-first pedagogy"],
 		checklist: ["Academic resource access", "Extended study spaces", "Technology-enabled learning"],
+		image: "/campus.webp",
+		imageAlt: "Amity University campus facilities",
 	},
 	clubs: {
 		title: "Student clubs that build leadership and confidence",
@@ -82,6 +87,8 @@ const tabContent: Record<LifeTabId, LifeTabContent> = {
 		],
 		stats: ["Cross-domain communities", "Peer leadership opportunities", "Year-round activities"],
 		checklist: ["Leadership exposure", "Communication practice", "Portfolio-building projects"],
+		image: "/clubs.webp",
+		imageAlt: "Students participating in Amity clubs and group activities",
 	},
 	sports: {
 		title: "Sports culture that supports discipline and wellbeing",
@@ -94,6 +101,8 @@ const tabContent: Record<LifeTabId, LifeTabContent> = {
 		],
 		stats: ["Competitive participation tracks", "Indoor and outdoor options", "Wellbeing-oriented routines"],
 		checklist: ["Physical fitness support", "Teamwork development", "Performance mindset"],
+		image: "/sports.jpg",
+		imageAlt: "Amity students engaged in sports activities",
 	},
 	events: {
 		title: "Events ecosystem with strong student participation",
@@ -106,6 +115,8 @@ const tabContent: Record<LifeTabId, LifeTabContent> = {
 		],
 		stats: ["Continuous event calendar", "Industry interactions", "Student-led execution"],
 		checklist: ["Public speaking opportunities", "Team event ownership", "Exposure to external experts"],
+		image: "/scene.webp",
+		imageAlt: "Amity University events and campus scene",
 	},
 	support: {
 		title: "Student support designed for sustained progress",
@@ -118,6 +129,8 @@ const tabContent: Record<LifeTabId, LifeTabContent> = {
 		],
 		stats: ["Academic mentoring system", "Wellbeing support access", "Career guidance touchpoints"],
 		checklist: ["Guided academic planning", "Counsellor access", "Career preparation support"],
+		image: "/support.jpg",
+		imageAlt: "Amity student support and counselling services",
 	},
 };
 
@@ -214,6 +227,16 @@ export default function StudentLifeTabs() {
 												style={{ overflow: "hidden" }}
 											>
 												<div className="border-t border-[#E6E8EC] px-4 pb-5 pt-4">
+													{/* Tab photo */}
+													<div className="mb-4 overflow-hidden rounded-xl border border-[#E6E8EC]">
+														<Image
+															src={c.image}
+															alt={c.imageAlt}
+															width={560}
+															height={240}
+															className="h-[140px] w-full object-cover"
+														/>
+													</div>
 													{/* Gold divider + title */}
 													<div className="mb-4 h-[2px] w-6 rounded-full bg-[#FACB06]" />
 													<p
@@ -288,40 +311,49 @@ export default function StudentLifeTabs() {
 						transition={{ duration: reducedMotion ? 0.16 : 0.3, ease: "easeOut" }}
 						className="mt-5"
 					>
-						{/* Card with gold top accent */}
-						<div className="overflow-hidden rounded-2xl border border-[#E6E8EC] bg-[#FFFFFF] shadow-[0_6px_24px_rgba(10,44,89,0.07)]">
-							{/* Gold accent bar */}
-							<div className="h-[3px] w-full bg-[#FACB06]" aria-hidden="true" />
+						{/* Card */}
+						<div className="overflow-hidden rounded-2xl border border-[#E6E8EC] bg-[#FFFFFF] shadow-[0_6px_32px_rgba(10,44,89,0.10)]">
 
-							<div className="p-6 md:p-8">
-								{/* Icon + title row */}
-								<div className="mb-5 flex items-start gap-4">
-									<m.span
-										whileHover={reducedMotion ? undefined : { scale: 1.08 }}
-										transition={{ duration: 0.18 }}
-										className="mt-0.5 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#0A2C59]/10 bg-[#0A2C59]/5 text-[#0A2C59]"
-									>
+							{/* Hero image with overlay + title */}
+							<div className="relative h-[220px] w-full overflow-hidden">
+								<Image
+									src={content.image}
+									alt={content.imageAlt}
+									fill
+									className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+									sizes="(max-width: 1200px) 100vw, 1200px"
+									unoptimized
+								/>
+								{/* Gradient overlay */}
+								<div className="absolute inset-0 bg-gradient-to-t from-[#041428]/80 via-[#041428]/30 to-transparent" />
+								{/* Gold top accent */}
+								<div className="absolute top-0 left-0 right-0 h-[3px] bg-[#FACB06]" aria-hidden="true" />
+								{/* Icon + title on image */}
+								<div className="absolute bottom-0 left-0 right-0 p-6 flex items-end gap-4">
+									<span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#FACB06] text-[#0A2C59]">
 										{tabIcons[activeTab]}
-									</m.span>
+									</span>
 									<div>
 										<m.div
 											initial={{ width: 0 }}
 											animate={{ width: 24 }}
 											transition={{ duration: reducedMotion ? 0.1 : 0.4, ease: [0.22, 1, 0.36, 1] }}
-											className="mb-2 h-[2px] rounded-full bg-[#FACB06]"
+											className="mb-1.5 h-[2px] rounded-full bg-[#FACB06]"
 										/>
 										<h3
-											className="font-[family-name:var(--font-libre-baskerville)] text-xl font-bold leading-snug text-[#0A2C59] md:text-2xl"
+											className="text-xl font-bold leading-snug text-white md:text-2xl"
 											style={{ fontFamily: "var(--font-libre-baskerville), serif" }}
 										>
 											{content.title}
 										</h3>
 									</div>
 								</div>
+							</div>
 
-								{/* Two-column body */}
-								<div className="grid gap-6 md:grid-cols-[1fr_260px] lg:grid-cols-[1fr_280px]">
-									{/* Left: bullet points */}
+							{/* Body: 3-column grid */}
+							<div className="grid gap-0 md:grid-cols-[1fr_220px_200px] divide-x divide-[#E6E8EC]">
+								{/* Left: bullet points */}
+								<div className="p-6">
 									<ul className="space-y-3">
 										{content.points.map((point, i) => (
 											<m.li
@@ -329,46 +361,45 @@ export default function StudentLifeTabs() {
 												initial={reducedMotion ? {} : { opacity: 0, x: -8 }}
 												animate={{ opacity: 1, x: 0 }}
 												transition={{ duration: reducedMotion ? 0.1 : 0.28, ease: "easeOut", delay: reducedMotion ? 0 : i * 0.05 }}
-												className="flex gap-3 text-sm leading-relaxed text-[#6C7676] md:text-base"
+												className="flex gap-3 text-sm leading-relaxed text-[#6C7676]"
 											>
 												<span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#FACB06]" aria-hidden="true" />
 												<span>{point}</span>
 											</m.li>
 										))}
 									</ul>
+								</div>
 
-									{/* Right: highlights sidebar */}
-									<div className="flex flex-col gap-4">
-										{/* Stats */}
-										<div className="rounded-xl border border-[#E6E8EC] bg-[#F7F7F7] p-4">
-											<p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#0A2C59]/60">Highlights</p>
-											<div className="space-y-2">
-												{content.stats.map((stat) => (
-													<div key={stat} className="flex items-center gap-2">
-														<span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#FACB06]" aria-hidden="true" />
-														<span className="text-xs font-medium text-[#0A2C59]">{stat}</span>
-													</div>
-												))}
+								{/* Mid: highlights */}
+								<div className="p-6 bg-[#F7F9FC]">
+									<p className="mb-4 text-[10px] font-bold uppercase tracking-[0.15em] text-[#0A2C59]/50">Highlights</p>
+									<div className="space-y-3">
+										{content.stats.map((stat) => (
+											<div key={stat} className="flex items-start gap-2.5">
+												<span className="mt-[3px] h-4 w-4 shrink-0 inline-flex items-center justify-center rounded-full bg-[#FACB06]" aria-hidden="true">
+													<svg viewBox="0 0 24 24" className="h-2.5 w-2.5" fill="none" stroke="#0A2C59" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+												</span>
+												<span className="text-[13px] font-medium leading-snug text-[#0A2C59]">{stat}</span>
 											</div>
-										</div>
-
-										{/* Checklist */}
-										<div className="rounded-xl border border-[#0A2C59]/10 bg-[#0A2C59]/[0.03] p-4">
-											<p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#0A2C59]/60">What you get</p>
-											<ul className="space-y-2.5">
-												{content.checklist.map((item) => (
-													<li key={item} className="flex items-start gap-2.5">
-														<span className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#0A2C59] text-[#FFFFFF]">
-															<svg viewBox="0 0 24 24" className="h-2.5 w-2.5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-																<path d="M5 13l4 4L19 7" />
-															</svg>
-														</span>
-														<span className="text-xs font-medium leading-snug text-[#0A2C59]">{item}</span>
-													</li>
-												))}
-											</ul>
-										</div>
+										))}
 									</div>
+								</div>
+
+								{/* Right: what you get */}
+								<div className="p-6 bg-[#0A2C59]/[0.03]">
+									<p className="mb-4 text-[10px] font-bold uppercase tracking-[0.15em] text-[#0A2C59]/50">What you get</p>
+									<ul className="space-y-3">
+										{content.checklist.map((item) => (
+											<li key={item} className="flex items-start gap-2.5">
+												<span className="mt-0.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#0A2C59] text-white">
+													<svg viewBox="0 0 24 24" className="h-2.5 w-2.5" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+														<path d="M5 13l4 4L19 7" />
+													</svg>
+												</span>
+												<span className="text-[13px] font-medium leading-snug text-[#0A2C59]">{item}</span>
+											</li>
+												))}
+									</ul>
 								</div>
 							</div>
 						</div>
