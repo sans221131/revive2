@@ -22,6 +22,9 @@ export const metadata: Metadata = {
 	title: "Amity Admissions | Recognized, Career-Focused, Student-First",
 	description:
 		"Explore why students choose Amity: recognition, student life, outcomes, alumni stories, and admissions support in one premium, text-first experience.",
+	icons: {
+		icon: "/amitylogo.png",
+	},
 };
 
 export default function RootLayout({
@@ -31,9 +34,6 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<head>
-				<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
-			</head>
 			<body className={`${inter.variable} ${libreBaskerville.variable} antialiased`}>
 				<EnquireModalProvider>
 					{children}
