@@ -5,6 +5,7 @@ import { useEnquireModal } from "../../src/lib/enquire-context";
 import { Accordion, type AccordionItem } from "../ui/Accordion";
 import { Button } from "../ui/Button";
 import Image from "next/image";
+import Link from "next/link";
 import Disclaimer from "../ui/Disclaimer";
 
 const faqItems: AccordionItem[] = [
@@ -179,13 +180,13 @@ export default function FaqFooter() {
 			<div className="container-shell flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
 				<Image src="/coursewaalalogo.png" alt="Coursewaala" width={400} height={140} className="h-40 w-auto object-contain" unoptimized />
 				<div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-[#6C7676]">
-					<a href="#" className="hover:text-[#0A2C59] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A2C59]/30">
+					<Link href="/privacy" className="hover:text-[#0A2C59] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A2C59]/30">
 						Privacy Policy
-					</a>
+					</Link>
 					<span aria-hidden="true" className="text-[#E6E8EC]">|</span>
-					<a href="#" className="hover:text-[#0A2C59] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A2C59]/30">
+					<Link href="/terms" className="hover:text-[#0A2C59] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A2C59]/30">
 						Terms of Use
-					</a>
+					</Link>
 					<span aria-hidden="true" className="text-[#E6E8EC]">|</span>
 						<span>Admissions subject to eligibility criteria.</span>
 					</div>
