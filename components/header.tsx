@@ -131,28 +131,43 @@ export default function StickyHeader() {
       >
         <div className="mx-auto max-w-[1200px] px-4 sm:px-6">
           <div className={`flex h-[72px] items-center justify-between ${textColor}`}>
-            {/* Brand */}
-            <button
-              type="button"
-              onClick={() => scrollToId("top")}
-              className="group flex items-center rounded-xl px-1 py-1 focus:outline-none focus:ring-2 focus:ring-[#FACB06]/60"
-              aria-label="Go to top"
-            >
-              <Image
-                src="/amitylogo.png"
-                alt="Amity University"
-                width={160}
-                height={56}
-                className="h-12 w-auto object-contain"
-                style={{
-                  filter: scrolled
-                    ? "none"
-                    : "brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0,0,0,0.4))",
-                }}
-                priority
-                unoptimized
-              />
-            </button>
+            {/* Brand + Partner text (Coursewaala) */}
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => scrollToId("top")}
+                className="group flex items-center rounded-xl px-1 py-1 focus:outline-none focus:ring-2 focus:ring-[#FACB06]/60"
+                aria-label="Coursewaala | Official Enrollment Partner for Amity Online MBA — Go to top"
+              >
+                <Image
+                  src="/amitylogo.png"
+                  alt="Amity University"
+                  width={160}
+                  height={56}
+                  className="h-12 w-auto object-contain"
+                  style={{
+                    filter: scrolled
+                      ? "none"
+                      : "brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0,0,0,0.4))",
+                  }}
+                  priority
+                  unoptimized
+                />
+              </button>
+
+              {/* Partner logo + explicit partner phrase in header */}
+              <div className="flex items-center gap-3">
+                <Image src="/coursewaalalogo.png" alt="Coursewaala" width={64} height={22} className="h-5 w-auto object-contain" unoptimized />
+                <div className="text-left">
+                  <div className="text-sm font-semibold text-[#0A2C59] hidden md:block">
+                    Coursewaala | Official Enrollment Partner for Amity Online MBA
+                  </div>
+                  <div className="text-sm font-semibold text-[#0A2C59] md:hidden">
+                    Coursewaala — Official Partner for Amity
+                  </div>
+                </div>
+              </div>
+            </div>
 
             {/* Desktop nav */}
             <nav className="hidden md:flex items-center gap-1">

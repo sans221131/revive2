@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Libre_Baskerville } from "next/font/google";
 import EnquireModal from "../../components/landing/EnquireModal";
+import Script from "next/script";
 import { EnquireModalProvider } from "../lib/enquire-context";
 import "./globals.css";
 
@@ -19,7 +20,7 @@ const libreBaskerville = Libre_Baskerville({
 });
 
 export const metadata: Metadata = {
-	title: "Amity Admissions | Recognized, Career-Focused, Student-First",
+	title: "Coursewaala | Official Enrollment Partner for Amity Online MBA",
 	description:
 		"Explore why students choose Amity: recognition, student life, outcomes, alumni stories, and admissions support in one premium, text-first experience.",
 	icons: {
@@ -34,8 +35,13 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${inter.variable} ${libreBaskerville.variable} antialiased`}>
+			<body suppressHydrationWarning className={`${inter.variable} ${libreBaskerville.variable} antialiased`}>
 				<EnquireModalProvider>
+					{/* Google tag (gtag.js) */}
+					<Script src="https://www.googletagmanager.com/gtag/js?id=AW-17892898232" strategy="afterInteractive" />
+					<Script id="gtag-init" strategy="afterInteractive">
+						{`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-17892898232');`}
+					</Script>
 					{children}
 					<EnquireModal />
 				</EnquireModalProvider>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Disclaimer from "../../../components/ui/Disclaimer";
 
 export const metadata = {
 	title: "Thank You | Amity Admissions",
@@ -7,6 +8,7 @@ export const metadata = {
 
 export default function ThankYouPage() {
 	return (
+		<>
 		<div className="flex min-h-screen flex-col items-center justify-center bg-[#041428] px-4 text-center">
 			{/* Gold accent line */}
 			<div className="mb-10 h-1 w-16 rounded-full bg-[#FACB06]" />
@@ -48,5 +50,12 @@ export default function ThankYouPage() {
 			{/* Bottom brand mark */}
 			<p className="mt-16 text-xs text-[#FFFFFF]/30">Amity University Admissions · {new Date().getFullYear()}</p>
 		</div>
+
+		<div className="mt-8 w-full flex justify-center">
+			<div className="max-w-xl w-full px-4">
+				<Disclaimer />
+			</div>
+		</div>
+		</>
 	);
 }

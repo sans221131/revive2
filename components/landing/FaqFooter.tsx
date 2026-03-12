@@ -4,6 +4,7 @@ import { LazyMotion, domAnimation, m, useReducedMotion } from "framer-motion";
 import { useEnquireModal } from "../../src/lib/enquire-context";
 import { Accordion, type AccordionItem } from "../ui/Accordion";
 import { Button } from "../ui/Button";
+import Disclaimer from "../ui/Disclaimer";
 
 const faqItems: AccordionItem[] = [
 	{
@@ -158,7 +159,12 @@ export default function FaqFooter() {
 				</LazyMotion>
 			</div>
 
-			{/* Footer */}
+				{/* Disclaimer */}
+				<div className="container-shell mt-8">
+					<Disclaimer />
+				</div>
+
+				{/* Footer */}
 		<footer className="mt-14 border-t border-[#E6E8EC] bg-[#F7F7F7] py-8">
 			<div className="container-shell flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
 				<p className="text-sm font-semibold text-[#0A2C59]">Amity University</p>

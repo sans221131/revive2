@@ -365,6 +365,11 @@ export default function HeroLead() {
 								</span>
 							</h1>
 
+			                            {/* Partner sub-headline */}
+			                            <p className="mt-3 max-w-2xl text-sm font-medium text-[#FACB06]/95">
+			                                Apply through Coursewaala, an authorized Amity admission partner.
+			                            </p>
+
 							{/* Body */}
 							<p className="mt-4 max-w-lg text-sm leading-relaxed text-[#FFFFFF]/80 md:text-base">
 								From recognized programs to structured student support, Amity offers a disciplined learning environment built for long-term outcomes.

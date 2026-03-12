@@ -528,6 +528,7 @@ export default function EnquireModal() {
 									</AnimatePresence>
 								</div>
 							</div>
+
 						</m.div>
 					</>
 				)}
