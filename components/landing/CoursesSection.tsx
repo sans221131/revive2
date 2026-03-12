@@ -1,6 +1,7 @@
 "use client";
 
 import { LazyMotion, domAnimation, m, useReducedMotion } from "framer-motion";
+import NextImage from "next/image";
 import { useEnquireModal } from "../../src/lib/enquire-context";
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
@@ -402,6 +403,24 @@ export default function CoursesSection() {
 								UGC-approved. Every card below shows real average salary outcomes so you can make an
 								informed choice, not a hopeful one.
 							</p>
+
+							{/* Partner credit — compact badge */}
+							<div className="mt-3">
+								<div className="inline-flex items-center gap-3 rounded-full bg-white/[0.03] px-3 py-2 text-sm text-white/70">
+									<NextImage
+										src="/coursewaalalogo.png"
+										alt="Coursewaala"
+										width={92}
+										height={30}
+										className="h-5 w-auto object-contain"
+										style={{ filter: "brightness(0) invert(1)" }}
+										unoptimized
+									/>
+									<span className="leading-snug">
+										Supported by <span className="font-semibold text-[#FACB06]">Coursewaala</span>
+									</span>
+								</div>
+							</div>
 						</m.div>
 					</div>
 

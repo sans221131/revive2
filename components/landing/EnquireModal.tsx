@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, LazyMotion, domAnimation, m, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { INDIAN_CITIES } from "../../src/lib/cities";
@@ -353,17 +354,17 @@ export default function EnquireModal() {
 
 								{/* Header */}
 								<div className="flex items-start justify-between px-7 pt-6 pb-2">
-									<div>
-										<p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#FACB06]">
-											Amity Admissions
-										</p>
-										<h2
-											className="mt-0.5 font-[family-name:var(--font-libre-baskerville)] text-xl font-bold text-[#0A2C59]"
-											style={{ fontFamily: "var(--font-libre-baskerville), serif" }}
-										>
-											Get in Touch
-										</h2>
+									{/* Left: Coursewaala eyebrow + title */}
+									<div className="flex items-start gap-4">
+											<div>
+												<p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#FACB06]">
+													Coursewaala
+												</p>
+												<div className="mt-1 text-sm text-[#6C7676]">Official Enrollment Partner for Amity Online MBA</div>
+											</div>
 									</div>
+
+									{/* Right: close button */}
 									<button
 										type="button"
 										onClick={closeModal}

@@ -216,14 +216,17 @@ export default function StickyHeader() {
 							<div className="h-[3px] w-full bg-[#FACB06]" aria-hidden="true" />
 							<div className="px-5 pb-6 pt-4">
 								<div className="mb-5 flex items-center justify-between">
-									<NextImage
-										src="/amitylogo.png"
-										alt="Amity University"
-										width={140}
-										height={48}
-										className="h-9 w-auto object-contain"
-										unoptimized
-									/>
+									<div className={`rounded-md p-1 ${scrolled ? "bg-transparent" : "bg-white/10"}`}>
+										<NextImage
+											src="/coursewaalalogo.png"
+											alt="Coursewaala"
+											width={140}
+											height={48}
+											className="h-9 w-auto object-contain"
+											style={{ filter: scrolled ? "none" : "brightness(0) invert(1)" }}
+											unoptimized
+										/>
+									</div>
 									<button
 										type="button"
 										onClick={() => setMenuOpen(false)}

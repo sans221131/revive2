@@ -4,6 +4,7 @@ import { LazyMotion, domAnimation, m, useReducedMotion } from "framer-motion";
 import { useEnquireModal } from "../../src/lib/enquire-context";
 import { Accordion, type AccordionItem } from "../ui/Accordion";
 import { Button } from "../ui/Button";
+import Image from "next/image";
 import Disclaimer from "../ui/Disclaimer";
 
 const faqItems: AccordionItem[] = [
@@ -159,15 +160,24 @@ export default function FaqFooter() {
 				</LazyMotion>
 			</div>
 
-				{/* Disclaimer */}
+				{/* Partner badge + Disclaimer */}
 				<div className="container-shell mt-8">
-					<Disclaimer />
+					<div className="flex items-center gap-4">
+						<Image src="/coursewaalalogo.png" alt="Coursewaala" width={120} height={36} className="h-9 w-auto object-contain" unoptimized />
+						<div>
+							<div className="text-sm font-semibold text-[#0A2C59]">Coursewaala</div>
+							<div className="text-xs text-[#6C7676]">Official Enrollment Partner for Amity Online MBA</div>
+						</div>
+					</div>
+					<div className="mt-4">
+						<Disclaimer />
+					</div>
 				</div>
 
 				{/* Footer */}
 		<footer className="mt-14 border-t border-[#E6E8EC] bg-[#F7F7F7] py-8">
 			<div className="container-shell flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-				<p className="text-sm font-semibold text-[#0A2C59]">Amity University</p>
+				<Image src="/coursewaalalogo.png" alt="Coursewaala" width={400} height={140} className="h-40 w-auto object-contain" unoptimized />
 				<div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-[#6C7676]">
 					<a href="#" className="hover:text-[#0A2C59] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A2C59]/30">
 						Privacy Policy

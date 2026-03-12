@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 	description:
 		"Explore why students choose Amity: recognition, student life, outcomes, alumni stories, and admissions support in one premium, text-first experience.",
 	icons: {
-		icon: "/amitylogo.png",
+		icon: "/coursewaalalogo.png",
 	},
 };
 

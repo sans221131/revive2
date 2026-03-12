@@ -157,7 +157,17 @@ export default function StickyHeader() {
 
               {/* Partner logo + explicit partner phrase in header */}
               <div className="flex items-center gap-3">
-                <Image src="/coursewaalalogo.png" alt="Coursewaala" width={64} height={22} className="h-5 w-auto object-contain" unoptimized />
+                <div className={`rounded-md p-1 ${scrolled ? "bg-transparent" : "bg-white/10"}`}>
+                  <Image
+                    src="/coursewaalalogo.png"
+                    alt="Coursewaala"
+                    width={92}
+                    height={30}
+                    className="block h-6 w-auto object-contain"
+                    style={{ filter: scrolled ? "none" : "brightness(0) invert(1)", opacity: 1 }}
+                    unoptimized
+                  />
+                </div>
                 <div className="text-left">
                   <div className="text-sm font-semibold text-[#0A2C59] hidden md:block">
                     Coursewaala | Official Enrollment Partner for Amity Online MBA
